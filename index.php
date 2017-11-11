@@ -5,15 +5,20 @@
 	<title>Bakery</title>
 </head>
 <body>
-
 <table>
 	<thead>
 		<tr>
 			<td rowspan="2">Pavadinimas</td>
 			<td colspan="5">2017.11.09</td>
 			<td colspan="5">2017.11.10</td>
+			<td colspan="5"> 2017.11.11</td>
 		</tr>
 		<tr>
+			<td>VL</td> <!--  Vakarykštis -->
+			<td>PG</td> <!--  Pagaminta -->
+			<td>PR</td> <!--  parduota -->
+			<td>SG</td> <!--  Sugadinta -->
+			<td>GL</td> <!--  Galutinis likutis -->
 			<td>VL</td> <!--  Vakarykštis -->
 			<td>PG</td> <!--  Pagaminta -->
 			<td>PR</td> <!--  parduota -->
@@ -96,7 +101,6 @@
 
 
 </table>
-
 <script type="text/javascript">
 	
 /**var date ={
@@ -213,6 +217,76 @@ var _objectbyproduct = {
 console.log(_arrayofobjects);
 console.log(_objectbyproduct);
 console.log(_objectbyday);
+
+//Įvykių suvestinė.
+
+var _objectbytransportation = {
+	"Mašina":
+	[
+      {
+      	"data":"2017.11.09",
+      	"Įvykis":"Nepraleido pagrindiniu keliu važiuojančios trans.pr", 
+      	"Adresas":"Baršausko g.",
+      	"Dalyviai":"Dvi autotransporto pr."
+      },
+      {
+      	"data":"2017.11.10",
+      	"Įvykis":"Nepraleido peščiojo", 
+      	"Adresas":"Laisvės alėja",
+      	"Dalyviai":"Pėstysis ir mašina"
+      },
+      {
+      	"data":"2017.11.11",
+      	"Įvykis":"Nepraleido peščiojo", 
+      	"Adresas":"Gedimino pr.",
+      	"Dalyviai":"Pėstysis ir mašina"
+      },
+    ],
+    "Dviratis":
+    [
+      {
+      	"data":"2017.11.09",
+      	"Įvykis":"Nepraleido pagrindiniu keliu važiuojančios trans.pr", 
+      	"Adresas":"Taikos pr.",
+      	"Dalyviai":"Dviratis ir mašina."
+      },
+      {
+       "data":"2017.11.09",
+      	"Įvykis":"Nepraleido per perėją einančio pėsčiojo", 
+      	"Adresas":"Taikos pr.",
+      	"Dalyviai":"Dviratis ir Pėstysis."
+      },
+      {
+       "data":"2017.11.10",
+      	"Įvykis":"Dviejų dviračių susidurimas", 
+      	"Adresas":"Panemunės dviračių takas",
+      	"Dalyviai":"Dviratis ir Dviratis."
+      },
+    ],
+    "Pėstysis":
+    [
+      {
+      	"data":"2017.11.09",
+      	"Įvykis":"Draužiamoje vietojo ėjo per kelią", 
+      	"Adresas":"Taikos pr.",
+      	"Dalyviai":"Pėstysis ir mašina."
+      },
+      {
+      	"data":"2017.11.10",
+      	"Įvykis":"Nedėvėjo atšvaitų neapšviestoje vietoje", 
+      	"Adresas":"Jonavos g.",
+      	"Dalyviai":"Dviratis ir pėtysis"
+	  },
+      {
+      	"data":"2017.11.11",
+      	"Įvykis":"Parkrinimas ant šaligatvio", 
+      	"Adresas":"Jonavos g.",
+      	"Dalyviai":"Pėstysis"
+	  },
+    ]
+}
+console.log(_objectbytransportation);
+
 </script>
 
 
