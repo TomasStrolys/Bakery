@@ -17,3 +17,7 @@ table td{
 thead {
 	background-color: #e7edf0
 }
+
+ #hand-made{ 
+     display: none;
+  }
