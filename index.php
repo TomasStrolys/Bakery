@@ -220,7 +220,7 @@ console.log(_objectbyday);
 
 //Įvykių suvestinė.
 
-var _objectbytransportation = {
+var _objectbyformoftransportation = {
 	"Mašina":
 	[
       {
@@ -285,7 +285,71 @@ var _objectbytransportation = {
 	  },
     ]
 }
-console.log(_objectbytransportation);
+console.log(_objectbybyformoftransportation);
+
+
+
+
+var _typeDO =[
+    {
+    	"Id":1,
+    	"name":"Mašina"
+
+    },
+    {
+    	"Id":2,
+    	"name":"Dviratis"
+    },
+    {
+        "Id":3,
+    	"name":"Pestysis"
+    },
+];
+var particpantsDo = [
+    {
+    	"id":1,
+    	"Tipas":1,
+    	"plate number":"HKC 777",
+    	"id_number": "484838493"
+
+    },
+    {
+    	"id":2,
+    	"Tipas":1,
+    	"plate number":"HKC 777",
+    	"id_number": "484838493"
+
+    },
+    {
+    	"id":3,
+    	"Tipas":1,
+    	"plate number":"HKC 777",
+    	"id_number": "484838493"
+
+    },
+
+];
+var _accidentDO = [
+     {
+     	"id":1,
+     	"dateTime": "2017-10-13 18:51:13",
+     	"address": "Baršausko g. 59, Kaunas",
+     	"particpants":
+     	[
+           1,2,3
+     	]
+     },
+     {
+     	"id":2,
+     	"dateTime": "2017-10-13 18:51:13",
+     	"address": "Baršausko g. 59, Kaunas",
+     	"particpants":
+     	[
+           1,3
+     	]
+     },
+
+];
 
 </script>
 
