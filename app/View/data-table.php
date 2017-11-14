@@ -1,6 +1,6 @@
 <?php
 
-$days = $keys ='';
+$days = $keys = $names = '';
 
 
  foreach ($data as $key => $value) {
@@ -11,21 +11,24 @@ $days = $keys ='';
 		               	 <td>PR</td>
 			             <td>SG</td>
 			             <td>GL</td>";
-                     
-      foreach ($value as $name => $data) {
 
-      	"Varškės" => [ 3, 28, 25, 2, 4],
+			         foreach ($value as $name => $array) {
 
-      	foreach ($data as $amount) {
-      		//$amount
-      		3
-      	}
-      }
-  }
+			         	$names .="<tr><td>$name</td></tr>";
 
-?>
+			foreach ($array as $amount) {
 
+				$arrayelm .="<td>$amount</td>";
+				
+			}
+		}
+	}
 
+var_dump($value);
+var_dump($key);
+
+  ?>
+ 
 
 <table>
 	<thead>
@@ -36,12 +39,31 @@ $days = $keys ='';
 			?>
 		</tr>
 		<tr>
+
 			<?php
               
                 echo $keys;
 			?>
 		</tr>
 	</thead>
+	<tbody>
+        <tr>
+        	<td>Varškės</td>
+        	<?php
+        	echo $arrayelm;
+        	?>
+
+        </tr>
+        <tr>
+        	<td>Aguoninės</td>
+        	<?php
+        	echo $arrayelm;
+        	?>
+
+        </tr>
+
+	</tbody>
+
 </table>
 
 
