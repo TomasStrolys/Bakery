@@ -1,6 +1,7 @@
 <?php
 
 $days = $keys = $names = '';
+$rows =[];
 
 
  foreach ($data as $key => $value) {
@@ -12,13 +13,20 @@ $days = $keys = $names = '';
 			             <td>SG</td>
 			             <td>GL</td>";
 
-			         foreach ($value as $name => $array) {
+			         foreach ($value as $name => $data) {
 
-			         	$names .="<tr><td>$name</td></tr>";
+                        if (!isset($rows[$name]))
+                        {
+                            $rows[$name] = "<td>$name</td>";
+                        }
 
-			foreach ($array as $amount) {
+			         	//$names .="<tr><td>$name</td></tr>";
 
-				$arrayelm .="<td>$amount</td>";
+			foreach ($data as $amount) {
+
+                $rows[$name] .= "<td>$amount</td>";
+               //echo ("<td>$amount</td>");
+				
 				
 			}
 		}
@@ -26,6 +34,8 @@ $days = $keys = $names = '';
 
 var_dump($value);
 var_dump($key);
+var_dump($rows);
+
 
   ?>
  
@@ -47,20 +57,17 @@ var_dump($key);
 		</tr>
 	</thead>
 	<tbody>
-        <tr>
-        	<td>Varškės</td>
-        	<?php
-        	echo $arrayelm;
-        	?>
 
-        </tr>
-        <tr>
-        	<td>Aguoninės</td>
-        	<?php
-        	echo $arrayelm;
-        	?>
 
-        </tr>
+		<?php
+         foreach ($rows as $row) {
+
+         	echo '<tr>' . $row . '</tr>'  ;
+         	
+         }
+
+     
+		?>
 
 	</tbody>
 
@@ -76,7 +83,7 @@ $html .= '<thead>';
 
 $html .= '</thead>';
 $html .= '</table>';
-
 echo $html;
+
 
 
