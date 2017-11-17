@@ -32,9 +32,9 @@ $rows =[];
 		}
 	}
 
-var_dump($value);
-var_dump($key);
-var_dump($rows);
+//var_dump($value);
+//var_dump($key);
+//var_dump($rows);
 
 
   ?>
