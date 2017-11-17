@@ -5,13 +5,15 @@ $new_data = ($_POST);
 
 //formatdata($new_data);
 
-var_dump($new_data);
+//var_dump($new_data);
 
 $existing_data = json_decode ( file_get_contents('data/Bakery_data.json'));
 
 $existing_data = objecttoarray($existing_data);
 
-var_dump($existing_data);
+update_data($existing_data, $new_data);
+
+//var_dump($existing_data);
 
 
 
@@ -38,7 +40,18 @@ var_dump($existing_data);
         return $obj;
 	}
 
+function update_data(&$existing_data, $new_data)
+{
+    if (isset($existing_data[ $new_data ['Data']]))
+    {
+        echo "Yes";
+    }
+    else
+    {
+    	echo "NO";
+    }
 
+}
 
 
 
