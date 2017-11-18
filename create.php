@@ -13,7 +13,7 @@ $existing_data = objecttoarray($existing_data);
 
 update_data($existing_data, $new_data);
 
-//var_dump($existing_data);
+var_dump($existing_data);
 
 
 
@@ -45,10 +45,22 @@ function update_data(&$existing_data, $new_data)
     if (isset($existing_data[ $new_data ['Data']]))
     {
         echo "Yes";
+        if (isset($existing_data[ $new_data ['product']]))
+        {
+            echo "Yes error (alredy exist";
+        }
+        else
+        {
+            echo "<br>No</br>";
+            //create product Record
+        }
     }
     else
     {
     	echo "NO";
+        //create Data
+        //create product Record
+
     }
 
 }
