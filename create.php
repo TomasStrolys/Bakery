@@ -44,20 +44,19 @@ function update_data(&$existing_data, $new_data)
 {
     if (isset($existing_data[ $new_data ['Data']]))
     {
-        echo "Yes";
         if (isset($existing_data[ $new_data ['product']]))
         {
-            echo "Yes error (alredy exist";
+            echo "error (date alredy exist";
         }
         else
         {
-            echo "<br>No</br>";
+            echo "Create Product Record";
             //create product Record
         }
     }
     else
     {
-    	echo "NO";
+    	echo "Create Data, Create Product Record";
         //create Data
         //create product Record
 
