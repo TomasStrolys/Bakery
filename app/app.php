@@ -1,6 +1,6 @@
 <?php
 
-$data = @include_once('Model/bakery-data.php');
+$data = json_decode(file_get_contents('data/Bakery_data.json'), true);
 
 //var_dump($data);
 

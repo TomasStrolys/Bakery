@@ -3,6 +3,9 @@
 
 $new_data = ($_POST);
 
+// TODO:
+// Check if all parameters are provided. 
+
 //formatdata($new_data);
 
 //var_dump($new_data);
@@ -62,7 +65,7 @@ function update_data(&$existing_data, $new_data)
         else
         {
             echo "Create Product Record";
-            createnewproduct();
+            $existing_data = createnewproduct($existing_data, $new_data);
 
         //     $existing_data[$new_data['date']][$new_data['product']] = [
         //     $new_data["VL"],
