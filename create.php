@@ -15,24 +15,25 @@ $existing_data = json_decode ( file_get_contents('data/Bakery_data.json'));
 //print_r($new_data);
 $existing_data = objecttoarray($existing_data);
 
-if ($new_data['Data'] == "" or $new_data["Vl"] == "" 
-                            or $new_data["PG"] =="" 
-                            or $new_data["PR"] == '' 
-                            or $new_data["SG"] == '' 
-                            or $new_data["GL"] == '' 
-                            or $new_data['product'] == '' )
+if ($new_data['Data'] == "" 
+     or $new_data["Vl"] == ""  
+     or $new_data["PG"] ==""  
+     or $new_data["PR"] == '' 
+     or $new_data["SG"] == '' 
+     or $new_data["GL"] == '' 
+     or $new_data["product"] == '' )
             
-{
-    echo "<h3>Prašome užpildyti visus langelius</h3>";
-}
-if ($new_data["PG"] + $new_data[ "Vl"] < $new_data["GL"]
-      or $new_data["PG"] + $new_data[ "Vl"] < $new_data["PR"]
-      or $new_data["Vl"] + $new_data["PG"] - $new_data["PR"] - $new_data["SG"] != 
-      $new_data["GL"])
-{
-    echo "<h3>Klaidingai suvesti duomenys</h3>";
-}
-else
+ {
+     echo "<h3>Prašome užpildyti visus langelius</h3>";
+ }
+ if ($new_data["PG"] + $new_data[ "Vl"] < $new_data["GL"]
+       or $new_data["PG"] + $new_data[ "Vl"] < $new_data["PR"]
+       or $new_data["Vl"] + $new_data["PG"] - $new_data["PR"] - $new_data["SG"] != 
+       $new_data["GL"])
+ {
+     echo "<h3>Klaidingai suvesti duomenys</h3>";
+ }
+ else
 {
 update_data($existing_data, $new_data);
 }

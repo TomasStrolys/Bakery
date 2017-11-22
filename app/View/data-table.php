@@ -3,6 +3,10 @@
 $days = $keys = $names = '';
 $rows =[];
 
+ksort($data);
+
+$products = json_decode ( file_get_contents('data/products.json'), true);
+//print_r($products);
 
  foreach ($data as $key => $value) {
                 	
@@ -12,29 +16,43 @@ $rows =[];
 		               	 <td>PR</td>
 			             <td>SG</td>
 			             <td>GL</td>";
+                    //print_r($key);
+                    //print_r($value);
+	                //   }
+                    //return;}
 
-			         foreach ($value as $name => $data) {
+			         foreach ($products as $key => $name) {
 
-                        if (!isset($rows[$name]))
+                        if (!isset($rows[$key]))
                         {
-                            $rows[$name] = "<td>$name</td>";
+                            $rows[$key] = "<td>$name</td>";
                         }
+                        if (isset($value[$key]))
+                        {
+                        	foreach ($value[$key] as $amount) 
+                        	{
+                        		$rows[$key] .= "<td>$amount</td>";
+                        	}
+                        }
+                        else 
+                        {
+                        	$rows[$key] .= "<td></td><td></td><td></td><td></td><td></td>";
+                        }
+                        //else (!isset($))
 
 			         	//$names .="<tr><td>$name</td></tr>";
 
-			foreach ($data as $amount) {
+			// foreach ($data as $amount) {
 
-                $rows[$name] .= "<td>$amount</td>";
-               //echo ("<td>$amount</td>");
+   //              $rows[$name] .= "<td>$amount</td>";
+   //             //echo ("<td>$amount</td>");
 				
 				
-			}
+			// }
 		}
 	}
 
-//var_dump($value);
-//var_dump($key);
-//var_dump($rows);
+//return;
 
 
   ?>
