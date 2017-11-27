@@ -17,6 +17,8 @@ function db_connect ()
 	{
 		die("could not connect");
 	}
+
+	$conn->set_charset("utf8mb4");
 	return $conn;
 }
 
@@ -33,7 +35,7 @@ function db_query (string $query)
 
 
 
-$query = "SELECT * FROM `bakery_products`";
+$query = "SELECT `id`,`name` FROM `bakery_products` ORDER BY `name` ASC";
 
 $result = db_query($query);
 foreach ($result as $key => $value) 
