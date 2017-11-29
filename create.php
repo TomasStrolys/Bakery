@@ -41,12 +41,13 @@ if ($new_data['date'] == ""
 
                   @include_once('app/database.php'); 
 
-                  $query = db_insertQuery("bakery_product_history", $new_data);
+                  $query = db_insertQuery("bakery_products_history", $new_data, true);
 
 
                    $result = db_query($query);
-                   //print_r($result);
-//update_data($existing_data, $new_data);
+
+                   print_r($result);
+
 }
 
 

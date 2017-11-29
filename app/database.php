@@ -28,9 +28,16 @@ function db_query (string $query)
 
 	$result =$conn->query($query);
 
-	$conn -> close();
 
-	return $result; 
+	if ($result)
+	{
+	    $conn -> close(); 
+	   return $result;
+	  
+	}
+	print_r($conn);
+    $conn -> close();
+	die();
 }
 
 
@@ -43,8 +50,12 @@ function db_query (string $query)
 // 	//print_r($value);
 // }
 
-function db_insertQuery(string $tableName, array $data)
+function db_insertQuery(string $tableName, array $data, bool $uuid = false ) : string
 {
+     if ($uuid)
+     	$data['id']=uniqid();
+
+
      $keys = $values = '';
        foreach ($data as $key => $value) 
        {
@@ -60,43 +71,9 @@ function db_insertQuery(string $tableName, array $data)
      //print_r($query);
 
      
-     die ($query);
+     return $query;
  }
-//                    `date`, 
-//                    `initial`,
-//                    `produced`, 
-//                    `sold`,  
-//                    `damaged`, 
-//                    `closed`, 
-//                    `product_id`) VALUES (" .
-//                    $new_data['date'] . "," .
-//                    $new_data['initial'] . "," .
-//                    $new_data['produced'] . "," .
-//                    $new_data['sold'] . "," .
-//                    $new_data['damaged'] . "," .
-//                    $new_data['closed'] . "," .
-//                    $new_data['product_id'] . ")";
 
-//                    die ($query);
-
-//                     $query = "INSERT INTO `bakery_products_history` (
-//                    `date`, 
-//                    `initial`,
-//                    `produced`, 
-//                    `sold`,  
-//                    `damaged`, 
-//                    `closed`, 
-//                    `product_id`) VALUES (" .
-//                    $new_data['date'] . "," .
-//                    $new_data['initial'] . "," .
-//                    $new_data['produced'] . "," .
-//                    $new_data['sold'] . "," .
-//                    $new_data['damaged'] . "," .
-//                    $new_data['closed'] . "," .
-//                    $new_data['product_id'] . ")";
-
-//                    die ($query);
-// }
 
 
 // //print_r(db_query($query));
