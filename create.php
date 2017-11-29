@@ -10,37 +10,49 @@ $new_data = ($_POST);
 
 //var_dump($new_data);
 
-$existing_data = json_decode ( file_get_contents('data/Bakery_data.json'));
 
-//print_r($new_data);
-$existing_data = objecttoarray($existing_data);
+// $existing_data = json_decode ( file_get_contents('data/Bakery_data.json'));
 
-if ($new_data['Data'] == "" 
-     or $new_data["Vl"] == ""  
-     or $new_data["PG"] ==""  
-     or $new_data["PR"] == '' 
-     or $new_data["SG"] == '' 
-     or $new_data["GL"] == '' 
-     or $new_data["product"] == '' )
+// //print_r($new_data);
+// $existing_data = objecttoarray($existing_data);
+
+//$require_fields = ['date','initial','produced','sold','damaged','GL','product']
+
+if ($new_data['date'] == "" 
+     or $new_data["initial"] == ""  
+     or $new_data["produced"] ==""  
+     or $new_data["sold"] == '' 
+     or $new_data["damaged"] == '' 
+     or $new_data["closed"] == '' 
+     or $new_data["product_id"] == '' )
             
  {
      echo "<h3>Prašome užpildyti visus langelius</h3>";
  }
- if ($new_data["PG"] + $new_data[ "Vl"] < $new_data["GL"]
-       or $new_data["PG"] + $new_data[ "Vl"] < $new_data["PR"]
-       or $new_data["Vl"] + $new_data["PG"] - $new_data["PR"] - $new_data["SG"] != 
-       $new_data["GL"])
- {
-     echo "<h3>Klaidingai suvesti duomenys</h3>";
- }
+ // if ($new_data["PG"] + $new_data[ "Vl"] < $new_data["GL"]
+ //       or $new_data["PG"] + $new_data[ "Vl"] < $new_data["PR"]
+ //       or $new_data["Vl"] + $new_data["PG"] - $new_data["PR"] - $new_data["SG"] != 
+ //       $new_data["GL"])
+ // {
+ //     echo "<h3>Klaidingai suvesti duomenys</h3>";
+ // }
  else
 {
-update_data($existing_data, $new_data);
+
+                  @include_once('app/database.php'); 
+
+                  $query = db_insertQuery("bakery_product_history", $new_data);
+
+
+                   $result = db_query($query);
+                   //print_r($result);
+//update_data($existing_data, $new_data);
 }
+
 
 //echo (json_encode($existing_data));
 
-file_put_contents ('data/Bakery_data.json', json_encode($existing_data) );
+// file_put_contents ('data/Bakery_data.json', json_encode($existing_data) );
 
 
 //print_r($existing_data);
@@ -56,38 +68,38 @@ file_put_contents ('data/Bakery_data.json', json_encode($existing_data) );
 
 
 
-	function objecttoarray(stdClass $obj) : array
-	{
-		$obj = (array) $obj; 
+// 	function objecttoarray(stdClass $obj) : array
+// 	{
+// 		$obj = (array) $obj; 
 
-        foreach ($obj as $key => &$value) {
+//         foreach ($obj as $key => &$value) {
 
-        	if( gettype ($value) =='object')
-        	{
-        	$value = objectToArray($value); 
-            }
-        }
+//         	if( gettype ($value) =='object')
+//         	{
+//         	$value = objectToArray($value); 
+//             }
+//         }
 
 
-        return $obj;
-	}
+//         return $obj;
+// 	}
 
-function update_data(&$existing_data, $new_data)
-{
+// function update_data(&$existing_data, $new_data)
+// {
     //print_r($existing_data);
     //print_r($new_data);
     //print_r($new_data['product']);
 
-    if (isset($existing_data[ $new_data ['Data']]))
-    {
-        if (isset($existing_data[ $new_data ['Data']][ $new_data['product']] ))
-        {
-            echo "error (data already exist)";
-        }
-        else
-        {
-            echo "Created Product Record";
-            $existing_data = createnewproduct($existing_data, $new_data);
+    // if (isset($existing_data[ $new_data ['Data']]))
+    // {
+    //     if (isset($existing_data[ $new_data ['Data']][ $new_data['product']] ))
+    //     {
+    //         echo "error (data already exist)";
+    //     }
+    //     else
+    //     {
+    //         echo "Created Product Record";
+    //         $existing_data = createnewproduct($existing_data, $new_data);
 
         //     $existing_data[$new_data['date']][$new_data['product']] = [
         //     $new_data["VL"],
@@ -98,13 +110,13 @@ function update_data(&$existing_data, $new_data)
         // ];
 
             //create product Record
-        }
-    }
-    else
-    {
-    	echo "Created Data, Created Product Record";
-        $existing_data[$new_data['Data']] = [];
-        $existing_data = createnewproduct($existing_data, $new_data);
+    //     }
+    // }
+    // else
+    // {
+    // 	echo "Created Data, Created Product Record";
+    //     $existing_data[$new_data['Data']] = [];
+    //     $existing_data = createnewproduct($existing_data, $new_data);
         // echo "create product";
         //   $existing_data[$new_data['date']][$new_data['product']] = [
         //     $new_data["VL"],
@@ -116,27 +128,27 @@ function update_data(&$existing_data, $new_data)
        // print_r($existing_data);
 
 
-    }
+//     }
 
-}
+// }
 
 //print_r($existing_data);
 
-function createnewproduct($existing_data, $new_data)
-{
+// function createnewproduct($existing_data, $new_data)
+// {
     //print_r($existing_data);
     //print_r($new_data);
 
-    $existing_data[$new_data['Data']][$new_data['product']] = [
-            (int) $new_data["Vl"],
-            (int) $new_data["PG"],
-            (int) $new_data["PR"],
-            (int) $new_data["SG"],
-            (int) $new_data["GL"]
-        ]; 
+//     $existing_data[$new_data['Data']][$new_data['product']] = [
+//             (int) $new_data["Vl"],
+//             (int) $new_data["PG"],
+//             (int) $new_data["PR"],
+//             (int) $new_data["SG"],
+//             (int) $new_data["GL"]
+//         ]; 
 
-    return $existing_data;
-}
+//     return $existing_data;
+// }
 //$existing_data = createdate($existing_data, $new_data['date']);
 
 //function createdate ($existing_data, $date)
