@@ -1,43 +1,46 @@
 <?php
 
-$days = $keys = $names = '';
-$rows =[];
+$days = $rows  = [];
+$keys = '';
 
-ksort($data);
 
-$products = json_decode ( file_get_contents('data/products.json'), true);
-//print_r($products);
 
- foreach ($data as $key => $value) {
-                	
-                	$days .= "<td colspan=\"5\">$key</td>";
+ foreach ($product_history as $value) 
+          {
+ 
+                	if (!isset($days[$value['date']]))
+                  {
+                    $days[$value['date']] = $value['date'];
                     $keys .="<td>VL</td>
 			              <td>PG</td>
 		               	 <td>PR</td>
 			             <td>SG</td>
 			             <td>GL</td>";
+                 }
+
+          }
                     //print_r($key);
                     //print_r($value);
 	                //   }
                     //return;}
 
-			         foreach ($products as $key => $name) {
+			         // foreach ($products as $key => $name) {
 
-                        if (!isset($rows[$key]))
-                        {
-                            $rows[$key] = "<td>$name</td>";
-                        }
-                        if (isset($value[$key]))
-                        {
-                        	foreach ($value[$key] as $amount) 
-                        	{
-                        		$rows[$key] .= "<td>$amount</td>";
-                        	}
-                        }
-                        else 
-                        {
-                        	$rows[$key] .= "<td></td><td></td><td></td><td></td><td></td>";
-                        }
+            //             if (!isset($rows[$key]))
+            //             {
+            //                 $rows[$key] = "<td>$name</td>";
+            //             }
+            //             if (isset($value[$key]))
+            //             {
+            //             	foreach ($value[$key] as $amount) 
+            //             	{
+            //             		$rows[$key] .= "<td>$amount</td>";
+            //             	}
+            //             }
+            //             else 
+            //             {
+            //             	$rows[$key] .= "<td></td><td></td><td></td><td></td><td></td>";
+            //             }
                         //else (!isset($))
 
 			         	//$names .="<tr><td>$name</td></tr>";
@@ -49,9 +52,6 @@ $products = json_decode ( file_get_contents('data/products.json'), true);
 				
 				
 			// }
-		}
-	}
-
 //return;
 
 
@@ -63,7 +63,11 @@ $products = json_decode ( file_get_contents('data/products.json'), true);
 		<tr>
 			<td rowspan="2">Pavadinimas</td>
 			<?php
-                echo $days;
+               foreach ($days as $date) 
+               {
+                 echo '<td colspan="5">' . $date . '</td>';
+               }
+                
 			?>
 		</tr>
 		<tr>
