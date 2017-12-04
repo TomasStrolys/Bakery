@@ -2,21 +2,14 @@
 
 class Bun
 {
-	const OWNER = 'BAKERY_INC';
-	public static $Owner_two = 'UAB Bakery';
-    private $a = 'A';
-
-    protected $b = 'B';
-
-    public $c = 'C';
+	public function __construct(string $key)
+	{
+		echo 'Hello' . $key . "\r\n";
+	}
 }
 
-Bun::$Owner_two = Bun::OWNER;
+$bun = new Bun('a');
+$bun = new Bun('b');
+$bun = new Bun('b');
+$bun = new Bun('r');
 
-print_r(Bun::OWNER);
-print_r(Bun::$Owner_two);
-$bun = new Bun();
-$bun->c = 'R';
-
-//print_r($bun);
-print_r($bun->c);
