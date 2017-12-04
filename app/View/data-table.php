@@ -41,7 +41,7 @@ foreach ($products as $value)
                                                     <td>' . $value['closed'] .'</td>';
           }
       
-          print_r($rows);
+          //print_r($rows);
 
 
 
