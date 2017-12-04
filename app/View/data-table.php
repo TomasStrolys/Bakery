@@ -15,8 +15,10 @@ foreach ($products as $value)
 }
 
 
+
  foreach ($product_history as $value) 
-          {
+          { 
+
  
                 	if (!isset($days[$value['date']]))
                   {
@@ -30,12 +32,18 @@ foreach ($products as $value)
                    foreach ($rows as &$product) 
                       {
                          $product[$value['date']] = '<td></td><td></td><td></td><td></td><td></td>';
-                      
                       }
-                    }
-
+                  }
+                    $rows[$value['product_id']][$value['date']]='<td>' . $value['initial'] .'</td>
+                                                    <td>' . $value['produced'] .'</td>
+                                                    <td>' . $value['sold'] .'</td>
+                                                    <td>' . $value['damaged'] .'</td>
+                                                    <td>' . $value['closed'] .'</td>';
           }
-              //print_r($rows);
+      
+          print_r($rows);
+
+
 
           //        if (!isset($rows[$value['product_id']]))
           //               {
@@ -45,7 +53,7 @@ foreach ($products as $value)
           //        $rows[$value['product_id']] .= '<td>' . $value['produced'] .'</td>'
           //        $rows[$value['product_id']] .= '<td>' . $value['sold'] .'</td>'
           //        $rows[$value['product_id']] .= '<td>' . $value['damged'] .'</td>'
-          //        $rows[$value['product_id']] .= '<td>' . $value['closed'] .'</td>'
+          //        $rows[$value['product_id']] .= '<td>' . $value['damged'] .'</td>'
                 
           // }
                     //print_r($key);
