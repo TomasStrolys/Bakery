@@ -12,6 +12,16 @@ class CoreModel
     private $dbname = 'ts_bakery';
     private $conn;
 
+
+    protected $table;
+
+    public function __construct()
+    {
+        if(!$this->table)
+            die ('No table name provided');
+    }
+
+
     private function connect()
     {
         $this->conn = mysqli_connect($this->servername, $this->username, $this->password, $this->dbname, 3307);
@@ -51,7 +61,7 @@ class CoreModel
 // 	//print_r($value);
 // }
 
-    protected function generateQuery(string $tableName, array $data, bool $uuid = false): string
+    protected function generateQuery( array $data, bool $uuid = false): string
     {
         if ($uuid)
             $data['id'] = uniqid();
@@ -67,10 +77,16 @@ class CoreModel
         $keys = rtrim($keys, ", ");
         $values = rtrim($values, ", ");
 
-        $query = "INSERT INTO `$tableName` ($keys) VALUES ($values)";
+        $query = "INSERT INTO `" . $this->table . "`($keys) VALUES ($values)";
         print_r($query);
 
 
         return $query;
     }
+    public function list()
+    {
+        $query = "SELECT  * FROM `" . $this->table . "` WHERE `delete_at` IS NULL";
+        return $this->query($query);
+    }
+
 }
