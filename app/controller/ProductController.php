@@ -13,8 +13,19 @@ class ProductController
       }
     public function store() : string
     {
+        //Product::create($_POST);
+        //(new Product())->create($_POST);
+
         $model = new Product();
-        print_r($_POST);
-        return '';
+        $model ->create($_POST);
+
+        //Redirected to list
+        header('Location:?view=product&action=list');
+    }
+
+    public function list()
+    {
+        $model = new Product();
+        $model->list();
     }
 }

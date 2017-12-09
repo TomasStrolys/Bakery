@@ -12,7 +12,7 @@
     <input type="number" name="ean"> <br>
 
     <div> Mato vienetas:</div>
-    <select>
+    <select name="unit">
         <option value="KG">Kg</option>
         <option value="PCS">VNT</option>
     </select>

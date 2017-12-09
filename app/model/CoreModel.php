@@ -68,7 +68,7 @@ class CoreModel
         $values = rtrim($values, ", ");
 
         $query = "INSERT INTO `$tableName` ($keys) VALUES ($values)";
-        //print_r($query);
+        print_r($query);
 
 
         return $query;

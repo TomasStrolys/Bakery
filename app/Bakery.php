@@ -26,7 +26,8 @@ class Bakery
 
                     if ($action == 'new')
                         $this->show((new ProductController())->create());
-
+                    elseif ($action =='list')
+                        (new ProductController())->list();
 
                     break;
             }
