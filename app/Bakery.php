@@ -16,22 +16,27 @@ class Bakery
         $view = $_GET['view'];
         $action = $_GET['action'];
 
-        if ($method == 'GET')
-        {
+        if ($method == 'GET') {
 
 
-            switch ($view)
-            {
+            switch ($view) {
                 case 'product';
 
                     if ($action == 'new')
                         $this->show((new ProductController())->create());
-                    elseif ($action =='list')
+                    elseif ($action == 'list')
                         (new ProductController())->list();
 
                     break;
-            }
+                case 'product_history';
 
+                    if ($action == 'new')
+                        $this->show((new Product_historyController())->create());
+                    elseif ($action == 'list')
+                        (new Product_historyController())->list();
+                    break;
+
+            }
         }
         elseif ($method == 'POST')
         {
@@ -45,11 +50,14 @@ class Bakery
                         $this->show((new ProductController())->store());
 
                     break;
+                case 'product_history';
+
+                if ($action == 'create')
+                    $this->show((new Product_historyController())->store());
+
+                     break;
             }
         }
-
-
-        echo "Bakery Online!";
 
     }
     private function show (string $text)

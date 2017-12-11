@@ -2,30 +2,29 @@
 
 namespace app;
 
+use app\model\Product_history;
 
-use app\model\Product;
-
-class ProductController
+class Product_historyController
 {
-      public function create() : string
-      {
-         return file_get_contents('app/view/product/new.php');
-      }
+    public function create() : string
+    {
+        return file_get_contents('app/view/product_history/new.php');
+    }
     public function store() : string
     {
         //Product::create($_POST);
         //(new Product())->create($_POST);
 
-        $model = new Product();
+        $model = new Product_history();
         $model ->create($_POST);
 
         //Redirected to list
-        header('Location:?view=product&action=list');
+        header('Location:?view=product_history&action=list');
     }
 
     public function list()
     {
-        $model = new Product();
+        $model = new Product_history();
         $result = $model->list();
 
         $header= '';
@@ -61,4 +60,5 @@ class ProductController
         echo "</table>";
 
     }
+
 }

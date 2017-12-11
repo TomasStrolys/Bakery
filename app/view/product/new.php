@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Naujas produktas</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
-<body style="text-align: center">
+
+<div style="text-align: center">
 <form method="POST" action="?view=product&action=create">
 
 
@@ -30,10 +25,9 @@
     <input type="number" step="0.01" name="sale_price"> <br>
     <br>
 
-    <input type="submit" value="Registruoti duomenis"> <br>
+    <input type="submit" class="btn btn-primary" value="Registruoti duomenis"> <br>
 
 
 </form>
 
-</body>
-</html>
+</div>
