@@ -23,7 +23,7 @@ class Bakery
                 case 'product';
 
                     if ($action == 'new')
-                        $this->show((new ProductController())->create());
+                        (new ProductController())->create();
                     elseif ($action == 'list')
                         (new ProductController())->list();
 
@@ -31,7 +31,7 @@ class Bakery
                 case 'product_history';
 
                     if ($action == 'new')
-                        $this->show((new Product_historyController())->create());
+                        (new Product_historyController())->create();
                     elseif ($action == 'list')
                         (new Product_historyController())->list();
                     break;

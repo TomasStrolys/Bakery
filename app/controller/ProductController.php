@@ -7,9 +7,10 @@ use app\model\Product;
 
 class ProductController
 {
-      public function create() : string
+      public function create()
       {
-         return file_get_contents('app/view/product/new.php');
+         //return file_get_contents('app/view/product/new-product.tpl');
+          (new TemplateEngineController('new-product'))->echooutput();
       }
     public function store() : string
     {
@@ -49,16 +50,14 @@ class ProductController
             $data .='</tr>';
 
         }
-        echo "<table class='table-secondary'>";
-        echo "<thead>";
-        echo "<tr>";
-        echo $header;
-        echo "</tr>";
-        echo "</thead>";
-        echo "<tbody>";
-        echo $data;
-        echo "</tbody>";
-        echo "</table>";
+
+        $template= new TemplateEngineController('table-list');
+
+
+            $template->set('header', $header);
+            $template->set('data', $data);
+            $template->echooutput();
+
 
     }
 }

@@ -88,5 +88,4 @@ class CoreModel
         $query = "SELECT  * FROM `" . $this->table . "` WHERE `delete_at` IS NULL";
         return $this->query($query);
     }
-
 }

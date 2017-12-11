@@ -8,7 +8,7 @@ class Product_historyController
 {
     public function create() : string
     {
-        return file_get_contents('app/view/product_history/new.php');
+        return file_get_contents('app/view/product_history/new-product.tpl');
     }
     public function store() : string
     {
