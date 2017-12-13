@@ -8,8 +8,8 @@
 
     <div> Prekė: </div>
     <select name="product_id">
-        
-    </select> <br>
+        [@productoptions]
+    </select>
 
     <div> Vakarykštis likutis : </div>
     <input type="number" name="initial"> <br>

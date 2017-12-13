@@ -47,14 +47,13 @@ class Bakery
                 case 'product';
 
                     if ($action == 'create')
-                        $this->show((new ProductController())->store());
+                    (new ProductController())->store();
 
                     break;
                 case 'product_history';
 
                 if ($action == 'create')
-                    $this->show((new Product_historyController())->store());
-
+                    (new Product_historyController())->store();
                      break;
             }
         }
