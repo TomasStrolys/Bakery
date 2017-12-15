@@ -13,11 +13,19 @@ class Bakery
     {
 
         $method = $_SERVER['REQUEST_METHOD'];
+
+        if ($method == 'GET' && (!isset($_GET['view']) || !isset($_GET['action'])))
+       {
+           (new UsersController())->login();
+           die();
+      }
+
         $view = $_GET['view'];
         $action = $_GET['action'];
 
         if ($method == 'GET') {
 
+            (new UsersController())->islogged();
 
             switch ($view) {
                 case 'product';
@@ -28,39 +36,59 @@ class Bakery
                         (new ProductController())->list();
 
                     break;
-                case 'product_history';
 
+                case 'product_history';
                     if ($action == 'new')
                         (new Product_historyController())->create();
                     elseif ($action == 'list')
                         (new Product_historyController())->list();
                     break;
 
+                case 'Users';
+                    if ($action == 'new')
+                        (new UsersController())->create();
+                    elseif ($action == 'list')
+                        (new UsersController())->list();
+                    break;
+
             }
         }
-        elseif ($method == 'POST')
-        {
+        elseif ($method == 'POST') {
 
 
-            switch ($view)
-            {
+            switch ($view) {
+
                 case 'product';
 
+                    (new UsersController())->islogged();
+
                     if ($action == 'create')
-                    (new ProductController())->store();
+                        (new ProductController())->store();
 
                     break;
+
                 case 'product_history';
 
-                if ($action == 'create')
-                    (new Product_historyController())->store();
-                     break;
+                    (new UsersController())->islogged();
+
+                    if ($action == 'create')
+                        (new Product_historyController())->store();
+                    break;
+
+                case 'Users';
+
+                    if ($action == 'create')
+                    {
+                        (new UsersController())->islogged();
+                        (new UsersController())->store();
+                    }
+
+                    elseif ($action == 'auth')
+                        (new UsersController())->auth();
+
+                    break;
             }
         }
 
-    }
-    private function show (string $text)
-    {
-        echo $text;
     }
 }
