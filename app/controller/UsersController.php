@@ -101,8 +101,12 @@ class UsersController
             $model = new Users();
             $result = $model->find($_COOKIE['user']);
 
+
+
             if ($result->num_rows != 1)
                 die('please login');
+
+            setcookie('user', $_COOKIE['user'], time() + 3600);
         }
         else
             die('please login!');

@@ -14,6 +14,10 @@ class ProductController
       }
     public function store() : string
     {
+
+        print_r($_POST);
+        print_r($_FILES);
+        die();
         //Product::create($_POST);
         //(new Product())->create($_POST);
 
