@@ -25,7 +25,7 @@
     <input type="number" step="0.01" name="sale_price"> <br>
 
     <div> Nuotrauka:</div>
-    <input type="file" multiple accept="image/jpeg, image/png" name="picture[]"> <br>
+    <input type="file" multiple accept="image/jpeg, image/png" name="picture"> <br>
 
     <br>
 
